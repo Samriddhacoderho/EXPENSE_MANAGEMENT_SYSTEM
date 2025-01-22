@@ -8,7 +8,7 @@
     background-repeat: no-repeat; /* Prevent tiling */
     display: flex; /* Flexbox for centering content */
     align-items: center; /* Vertically center */
-    justify-content: center; /* Horizontally center *ok/
+    justify-content: center; /* Horizontally center */
   }
 
   .logo {
@@ -29,7 +29,7 @@
   .card {
     max-width: 400px;
     width: 100%;
-    padding: 20px;
+    padding: 40px;
     border-radius: 25px; /* Rounded corners */
     background: linear-gradient(to right, #239d5a, #5dd08b); /* Gradient background */
     box-shadow: 0 10px 30px 10px rgba(0, 0, 0, 0.5); /* Updated shadow */
@@ -49,7 +49,7 @@
     color: white;       /* White text */
     font-weight: bold;  /* Bold text */
     border: none;       /* Remove border */
-    padding: 10px;      /* Add padding */
+    padding: 10px 20px;      /* Add padding */
     cursor: pointer;    /* Pointer cursor */
   }
   
