@@ -1,0 +1,51 @@
+.container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+      ),
+      url("/public/frontpage_background.jpg");
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .card {
+    width: 600px;
+    max-width: 100%;
+    padding: 39px;
+    border-radius: 25px;
+    background: linear-gradient(to right, #239d5a, #5dd08b);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    color: white;
+  }
+  /* Logo removed for now for the seamless transition between pages as it was covering 
+  large area and the card was too big making it look unpolished */
+
+  .logo {
+    width:200px;
+    height: 100px; /* Adjust height as needed */
+    background-image: url('/public/logo.png');
+    background-size: cover; /* Ensures the image covers the area without distortion */
+    background-position: center; /* Centers the image within the container */
+    margin: 0 auto;  /* Centers the logo horizontally */
+  }
+  
+  .registerButton {
+    border-radius: 25px; /* Higher border radius for roundness */
+    width: 150px;       /* Smaller button width */
+    background: linear-gradient(to right, #2f0bcf, #9180ed); /* Gradient background */
+    color: white;       /* White text */
+    font-weight: bold;  /* Bold text */
+    border: none;       /* Remove border */
+    padding: 10px 20px;      /* Add padding */
+    cursor: pointer;    /* Pointer cursor */
+  }
+  
+  .registerButton:hover {
+    background: linear-gradient(to right, #121111, #232221);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
