@@ -1,5 +1,6 @@
 import React from "react";
 
+//This is an About Component
 const About = () => {
   return (
     <div className="my-3">
