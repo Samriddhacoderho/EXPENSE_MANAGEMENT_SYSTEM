@@ -7,6 +7,7 @@ import Register from './components/Register';
 import Dashboard from './components/Dashboard';
 import Home from './components/Home';
 import Context from './contexts/Context';
+import CreateExpense from './components/CreateExpense';
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route exact path='/login' element={<Login/>}/>
         <Route exact path='/register' element={<Register/>}/>
         <Route exact path='/dashboard' element={<Dashboard/>}/>
+        <Route exact path='/create-expense' element={<CreateExpense/>}/>
       </Routes> 
     </BrowserRouter>
     </Context>

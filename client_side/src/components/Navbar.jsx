@@ -94,6 +94,18 @@ const Navbar = () => {
                   </Link>
                 </li>
               )}
+              {isLoggedIn && (
+                <li className="nav-item">
+                  <Link
+                    className={`nav-link ${
+                      location.pathname === "/create-expense" ? "active" : ""
+                    }`}
+                    to="/create-expense"
+                  >
+                    Create Expense
+                  </Link>
+                </li>
+              )}
             </ul>
             {isLoggedIn && (
               <button
@@ -104,6 +116,7 @@ const Navbar = () => {
                 Sign Out
               </button>
             )}
+
           </div>
         </div>
       </nav>
