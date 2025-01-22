@@ -8,7 +8,7 @@
     background-repeat: no-repeat; /* Prevent tiling */
     display: flex; /* Flexbox for centering content */
     align-items: center; /* Vertically center */
-    justify-content: center; /* Horizontally center */
+    justify-content: center; /* Horizontally center *ok/
   }
 
   .logo {
