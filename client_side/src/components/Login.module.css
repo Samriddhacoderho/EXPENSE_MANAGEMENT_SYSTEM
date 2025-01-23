@@ -26,20 +26,38 @@
   }
   
   /* Gradient background and rounded corners for the card */
+  /* Gradient background and rounded corners for the card */
+.card {
+  max-width: 400px;
+  width: 100%;
+  padding: 40px;
+  border-radius: 25px; /* Rounded corners */
+  background: linear-gradient(to right, #239d5a, #5dd08b); /* Gradient background */
+  box-shadow: 0 10px 30px 10px rgba(0, 0, 0, 0.5); /* Updated shadow */
+  color: white; /* White text */
+
+  /* Flexbox-friendly offset */
+  position: relative;
+  left: 10%; /* Move slightly to the right */
+  transform: translateX(10%); /* Responsive offset */
+}
+
+/* Responsive adjustments for the card */
+@media (max-width: 768px) {
   .card {
-    max-width: 400px;
-    width: 100%;
-    padding: 40px;
-    border-radius: 25px; /* Rounded corners */
-    background: linear-gradient(to right, #239d5a, #5dd08b); /* Gradient background */
-    box-shadow: 0 10px 30px 10px rgba(0, 0, 0, 0.5); /* Updated shadow */
-    color: white; /* White text */
+      left: 0; /* Reset offset for smaller screens */
+      transform: translateX(0); /* Fully center the card */
   }
-  
-  /* Text under the email field */
-  .card .form-text {
-    color: white; /* Change text color to white */
+}
+
+@media (max-width: 480px) {
+  .card {
+      left: 0;
+      transform: translateX(0); /* Ensure it's centered on small devices */
+      padding: 20px; /* Reduce padding for smaller devices */
   }
+}
+
   
   /* Styling the login button */
   .loginButton {
