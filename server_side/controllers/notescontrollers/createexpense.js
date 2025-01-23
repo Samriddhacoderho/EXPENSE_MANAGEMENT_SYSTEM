@@ -4,7 +4,6 @@ const createexpense=async(req,res)=>{
     try {
         const {expenseName,expenseCategory,expenseAmount}=req.body
         const result=await expenseModel.create({user:req.user.id,expenseName,expenseCategory,expenseAmount})
-        console.log(result)
         res.send("Expense Insertion Successful")
     } catch (error) {
         res.status(400).send(error.message)

@@ -2,11 +2,11 @@ import expenseModel from "../../models/Expensemodel.js";
 
 const deleteexpense = async (req, res) => {
   try {
-    const result = await expenseModel.findById(req.params.id);
+    const result = await expenseModel.findById(req.body.id);
     if (result.user.toString() !== req.user.id) {
       return res.status(404).send("Deletion Not Allowed");
     }
-    const deleted = await expenseModel.deleteOne({ _id: req.params.id });
+    const deleted = await expenseModel.deleteOne({ _id: req.body.id });
     if (!deleted.deletedCount) {
       return res.status(404).send("Deletion Unsucessful");
     }
