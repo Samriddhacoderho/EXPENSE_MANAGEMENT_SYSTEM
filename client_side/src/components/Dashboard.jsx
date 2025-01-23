@@ -41,7 +41,7 @@ const Dashboard = () => {
     <>
       <button className="mx-3 my-3" onClick={handleExpense}>{buttontext}</button>
       {!expense.includes("no data")?buttontext==="Hide Expenses" && expense.map((resItem)=>{
-        return (<ExpenseCard key={resItem.date}expenseName={resItem.expenseName} expenseCategory={resItem.expenseCategory} expenseAmount={resItem.expenseAmount} date={resItem.date}/>)
+        return (<ExpenseCard key={resItem._id}expenseName={resItem.expenseName} expenseCategory={resItem.expenseCategory} expenseAmount={resItem.expenseAmount} date={resItem.date} id={resItem._id}/>)
       }):buttontext==="Hide Expenses" && <div className="mx-3"><h1>No expenses found</h1></div>}
     </>
   ) : (

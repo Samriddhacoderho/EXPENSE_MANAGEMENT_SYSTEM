@@ -10,6 +10,6 @@ const expenseRoute=express.Router()
 expenseRoute.post("/expense-create",tokenAuth,createexpense)
 expenseRoute.get("/expenseget",tokenAuth,getexpense)
 expenseRoute.put("/expenseupdate/:id",tokenAuth,putexpense)
-expenseRoute.delete("/expensedelete/:id",tokenAuth,deleteexpense)
+expenseRoute.delete("/expensedelete",tokenAuth,deleteexpense)
 
 export default expenseRoute
