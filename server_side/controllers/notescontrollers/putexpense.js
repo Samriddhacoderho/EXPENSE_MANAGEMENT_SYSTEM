@@ -12,7 +12,7 @@ const putexpense = async (req, res) => {
       { runValidators: true }
     );
     if (!update.modifiedCount) {
-      return res.status(404).send("Updation Failed");
+      return res.status(404).send("There are no update changes to be made. ");
     }
     res.send("Updation Successful");
   } catch (error) {
