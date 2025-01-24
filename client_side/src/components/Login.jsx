@@ -88,7 +88,7 @@ const Login = () => {
               disabled={isSubmitting}
               className={`btn ${styles.loginButton}`}
             >
-              {isSubmitting ? "Submitting..." : "Login"}
+              {isSubmitting ? "Logging In..." : "Login"}
             </button>
           </div>
         </form>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 const CreateExpense = () => {
@@ -7,7 +7,7 @@ const CreateExpense = () => {
     register,
     handleSubmit,
     watch,
-    formState: { errors },
+    formState: { errors,isSubmitting },
   } = useForm();
 
   const onclick = async (data) => {
@@ -94,8 +94,8 @@ const CreateExpense = () => {
             <p style={{ color: "red" }}>{errors.expenseCategory.message}</p>
           )}
         </div>
-        <button type="submit" className="btn btn-primary">
-          Submit
+        <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
+          {isSubmitting?"Creating Expense":"Create Expense"}
         </button>
       </form>
     </div>:<div><h1>You cannot access this page without logging in</h1></div>

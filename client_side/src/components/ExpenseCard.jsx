@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { context } from "../contexts/Context";
 
 const ExpenseCard = (props) => {
+  const contextsetItem=useContext(context)
+  const func_setItems=()=>{
+    contextsetItem.setupdateItems({
+      id:props.id,
+      expenseName:props.expenseName,
+      expenseAmount:props.expenseAmount,
+      expenseCategory:props.expenseCategory
+    })
+  }
   const deleteFunc = async () => {
     try {
       if(window.confirm("Are you sure you want to delete this note?"))
@@ -41,8 +51,8 @@ const ExpenseCard = (props) => {
           <p className="card-link">
             Date:<b>{props.date}</b>
           </p>
-          <Link to="/aboutus">
-            <button type="button" className="btn btn-warning">
+          <Link to="/edit-expense">
+            <button type="button" className="btn btn-warning" onClick={func_setItems}>
               Edit
             </button>
           </Link>
