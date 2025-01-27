@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { context } from "../contexts/Context";
-import styles from "../css_files/Login.module.css"
+import styles from "./Login.module.css";
 
 const Login = () => {
   const isLoggedin = document.cookie.includes("loginToken=");
@@ -88,7 +88,7 @@ const Login = () => {
               disabled={isSubmitting}
               className={`btn ${styles.loginButton}`}
             >
-              {isSubmitting ? "Logging In..." : "Login"}
+              {isSubmitting ? "Submitting..." : "Login"}
             </button>
           </div>
         </form>
