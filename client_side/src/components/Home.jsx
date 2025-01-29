@@ -1,6 +1,6 @@
 import React from 'react';
 import '../css_files/Home.css';
-
+import { Link } from 'react-router-dom';
 
 function App() {
   return (
@@ -23,7 +23,9 @@ function App() {
           Visualize your spending patterns, stay on top of your budget, and
           achieve financial freedom!
         </p>
+        <Link to="/login">
         <button className="btn-cta">Get Started Now</button>
+        </Link>
       </div>
 
       {/* Features */}
@@ -66,7 +68,9 @@ function App() {
           <p className="cta-subtitle">
           Join a community of people who’ve transformed the way they manage their finances.
           </p>
+          <Link to = "/login">
           <button className="btn-cta">Start Now</button>
+          </Link>
         </div>
       </div>
 
