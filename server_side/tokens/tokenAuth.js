@@ -9,8 +9,10 @@ const tokenAuth=async(req,res,next)=>{
             next()
         }
     } catch (error) {
+        console.log("Cannot Access the Route")
         return res.status(400).send("Internal System Failure")   
     }
 }
 
 export default tokenAuth
+

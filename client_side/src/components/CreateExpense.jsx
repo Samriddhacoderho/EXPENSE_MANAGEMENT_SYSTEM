@@ -22,7 +22,7 @@ const CreateExpense = () => {
           credentials: "include",
         });
         if (!response.ok) {
-          alert("Internal System Failure");
+          alert(await response.text());
         } else {
           const result = await response.text();
           alert(result);

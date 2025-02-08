@@ -121,7 +121,7 @@ const Editexpense = () => {
       </div>
     ) : (
       <div>
-        <h1>You cannot access this page.</h1>
+        <h1>You can only access this page only from the Dashboard Component by pressing on the Edit Button for a specific expense.</h1>
       </div>
     )
   ) : (
