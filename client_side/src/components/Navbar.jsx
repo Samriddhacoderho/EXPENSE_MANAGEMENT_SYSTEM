@@ -126,7 +126,7 @@ const Navbar = () => {
                     }`}
                     to="/dashboard"
                     style={
-                      contexts.mode === "Enable Dark Mode"
+                      contexts.mode === "Enable Dark Mode"               //Dark Mode enable
                         ? { color: "black" }
                         : { color: "white" }
                     }
