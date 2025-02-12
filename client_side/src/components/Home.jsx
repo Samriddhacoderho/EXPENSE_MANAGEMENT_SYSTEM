@@ -1,89 +1,35 @@
-import React from 'react';
-import '../css_files/Home.css';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { context } from '../contexts/Context';
+import { Link } from "react-router-dom";
+import "../css_files/Home.css";
 
-function App() {
+const Home = () => {
+  const contexts=useContext(context)
+  const firstnameAccess = useContext(context);
+  const isLoggedIn = document.cookie.includes("loginToken=");
+
   return (
-    <div className="app">
-      {/* Top navigation bar */}
-      <nav className="nav">
-        <div className="nav-container">
-          <h1 className="nav-logo">Expense Tracker</h1>
-          
-        </div>
-      </nav>
-
-      {/* Main content area */}
-      <div className="hero">
-        <h2 className="hero-title">
-          Take Control of Your <span className="highlight">Expenses</span> <br />
-          With Ease & Precision
-        </h2>
-        <p className="hero-subtitle">
-          Visualize your spending patterns, stay on top of your budget, and
-          achieve financial freedom!
-        </p>
-        <Link to="/login">
-        <button className="btn-cta">Get Started Now</button>
-        </Link>
+    isLoggedIn ? (
+      <div className="home-container" style={contexts.mode==="Enable Dark Mode"?{backgroundColor:"#f5f5f5"}:{backgroundColor:"#161515"}}>
+        <h1 className="home-welcome-message" style={contexts.mode==="Enable Dark Mode"?{color:"#333"}:{color:"white"}}>
+          Welcome to Home Page {firstnameAccess.userMessage}:)
+        </h1>
       </div>
-
-      {/* Features */}
-      <div className="features">
-        <h3 className="features-title">Why Choose Us?</h3>
-        <div className="features-grid">
-          {[
-            {
-              icon: "💰",
-              title: "Track Expenses",
-              description:
-                "Keep track of where your money goes and find ways to save more.",
-            },
-            {
-              icon: "📊",
-              title: "See Your Data",
-              description:
-                "View your spending with simple charts that make sense.",
-            },
-            {
-              icon: "🔒",
-              title: "Stay Safe",
-              description:
-                "Your money info is locked up tight - we take security seriously.",
-            },
-          ].map((item, i) => (
-            <div key={i} className="feature-card">
-              <div className="feature-icon">{item.icon}</div>
-              <h4 className="feature-title">{item.title}</h4>
-              <p className="feature-description">{item.description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Sign up prompt */}
-      <div className="cta">
-        <div className="cta-container">
-          <h4 className="cta-title">Want to save lots of money?</h4>
-          <p className="cta-subtitle">
-          Join a community of people who’ve transformed the way they manage their finances.
-          </p>
-          <Link to = "/login">
-          <button className="btn-cta">Start Now</button>
+    ) : (
+      <div className="home-container" style={contexts.mode==="Enable Dark Mode"?{backgroundColor:"#f5f5f5"}:{backgroundColor:"#161515"}}>
+        <h1 className="home-welcome-message" style={contexts.mode==="Enable Dark Mode"?{color:"#333"}:{color:"white"}}>Welcome to Budget Bee</h1>
+        <p className="home-description" style={contexts.mode==="Enable Dark Mode"?{color:"rgb(103 93 73)"}:{color:"#e7dada"}}>A budgeting app for managing your finances</p>
+        <div className="home-buttons">
+          <Link to="/login">
+            <button className="home-button login-button">Login</button>
+          </Link>
+          <Link to="/register">
+            <button className="home-button register-button">Register</button>
           </Link>
         </div>
       </div>
-
-      {/* Footer */}
-      <footer className="footer">
-        <div className="footer-container">
-          <p className="footer-text">
-            © {new Date().getFullYear()} Expense Tracker
-          </p>
-        </div>
-      </footer>
-    </div>
+    )
   );
-}
+};
 
-export default App;
+export default Home;
