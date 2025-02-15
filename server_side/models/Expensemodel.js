@@ -1,9 +1,10 @@
 import mongoose, { Schema } from "mongoose";
 import validator from "validator"
+// Define the expense schema
 const expenseSchema=new mongoose.Schema({
     user:{
-        type:Schema.Types.ObjectId,
-        ref:"logins",
+        type:Schema.Types.ObjectId,// Reference to the user who made the expense
+        ref:"logins",// Refers to the "logins" collection
         required:true
     },
     expenseName:{
