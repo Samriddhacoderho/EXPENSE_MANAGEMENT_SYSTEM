@@ -1,0 +1,80 @@
+
+
+
+/* General styling */
+.my-3 {
+  margin: 1rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Accordion container */
+.accordion {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 90%; /* Adjust width */
+  max-width: 600px; /* Center-align content */
+}
+
+/* Accordion item */
+.accordion-item {
+  border: none;
+  margin-bottom: 1rem;
+}
+
+/* Accordion header styling */
+.accordion-header {
+  background-color: #4caf50; /* New color: a soft green */
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center; /* Center-align text */
+  cursor: pointer;
+}
+
+/* Accordion button adjustments */
+.accordion-header .accordion-button {
+  background: none;
+  border: none;
+  color: white;
+  padding: 0;
+  text-align: center;
+  outline: none;
+  box-shadow: none;
+  width: 100%; /* Ensure the button fits within the header */
+  transition: all 0.3s ease;
+}
+
+.accordion-header .accordion-button:hover {
+  color: #e8f5e9; /* Lighter green on hover */
+}
+
+.accordion-header .accordion-button:focus {
+  box-shadow: none;
+}
+
+/* Accordion body styling */
+.accordion-body {
+  padding: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  background-color: #f0f4f8;
+  border-left: 4px solid #4caf50; /* Match header color */
+  border-radius: 5px;
+  color: #333;
+}
+
+/* Responsive styling for smaller screens */
+@media (max-width: 768px) {
+  .accordion-header {
+    font-size: 0.9rem;
+  }
+  .accordion-body {
+    font-size: 0.85rem;
+  }
+}

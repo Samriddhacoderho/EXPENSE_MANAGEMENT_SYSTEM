@@ -19,7 +19,7 @@ app.use(cors({
 }))
 
 //database
-connectTo()
+connectTo() 
 
 //login routes
 app.use("/",authRoute)
@@ -27,4 +27,5 @@ app.use("/",authRoute)
 //expense routes
 app.use("/",expenseRoute)
 
-app.listen(port,()=>console.log(`Succesfully listening at http://localhost:${port}`))
+app.listen(port,()=>console.log(`Succesfully listening at http://localhost:${port}`)) 
+

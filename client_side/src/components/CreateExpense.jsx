@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
+import {useNavigate} from "react-router-dom"
+import "../css_files/Createexpense.css"
+import { context } from "../contexts/Context";
 
 const CreateExpense = () => {
-  const isLoggedin=document.cookie.includes("loginToken=")
+  const contexts=useContext(context)
+  const navigate=useNavigate()
+  const isLoggedin = document.cookie.includes("loginToken=")
   const {
     register,
     handleSubmit,
     watch,
-    formState: { errors,isSubmitting },
+    formState: { errors, isSubmitting },
   } = useForm();
 
   const onclick = async (data) => {
@@ -22,10 +27,11 @@ const CreateExpense = () => {
           credentials: "include",
         });
         if (!response.ok) {
-          alert(await response.text());
+          alert("Internal System Failure");
         } else {
           const result = await response.text();
           alert(result);
+          navigate("/dashboard")
         }
       }
     } catch (error) {
@@ -33,13 +39,13 @@ const CreateExpense = () => {
     }
   };
 
+  contexts.mode==="Enable Dark Mode"?document.body.style.backgroundColor="white":document.body.style.backgroundColor="black"
+
   return (
-    isLoggedin?<div className="container my-3" style={{ border: "1px solid black" }}>
-      <form onSubmit={handleSubmit(onclick)}>
-        <div className="mb-3">
-          <label htmlFor="expensename" className="form-label">
-            Expense Name
-          </label>
+    isLoggedin ? <div className="create-expense-container" style={contexts.mode==="Enable Dark Mode"?{backgroundColor:"#fff"}:{backgroundColor:"#292929",border:"3px solid red"}}>
+      <form onSubmit={handleSubmit(onclick)} className="expense-form">
+        <div className="form-group">
+          <label htmlFor="expensename" className="form-label" style={contexts.mode==="Enable Dark Mode"?{color:"black"}:{color:"white"}}>Expense Name</label>
           <input
             type="text"
             className="form-control"
@@ -49,14 +55,10 @@ const CreateExpense = () => {
               required: "This field cannot be left empty",
             })}
           />
-          {errors.expenseName && (
-            <p style={{ color: "red" }}>{errors.expenseName.message}</p>
-          )}
+          {errors.expenseName && <p className="error-message">{errors.expenseName.message}</p>}
         </div>
-        <div className="mb-3">
-          <label htmlFor="expenseamount" className="form-label">
-            Expense Amount
-          </label>
+        <div className="form-group">
+          <label htmlFor="expenseamount" className="form-label" style={contexts.mode==="Enable Dark Mode"?{color:"black"}:{color:"white"}}>Expense Amount</label>
           <input
             type="number"
             className="form-control"
@@ -68,16 +70,13 @@ const CreateExpense = () => {
               min: { value: 1, message: "Invalid Amount" },
             })}
           />
-          {errors.expenseAmount && (
-            <p style={{ color: "red" }}>{errors.expenseAmount.message}</p>
-          )}
+          {errors.expenseAmount && <p className="error-message">{errors.expenseAmount.message}</p>}
         </div>
-        <div className="mb-3">
-          <label htmlFor="expensecategory" className="form-label">
-            Expense Category:
-          </label>
+        <div className="form-group">
+          <label htmlFor="expensecategory" className="form-label" style={contexts.mode==="Enable Dark Mode"?{color:"black"}:{color:"white"}}>Expense Category:</label>
           <select
             id="expenseCategory"
+            className="form-select"
             {...register("expenseCategory", {
               required: "Please choose one category",
             })}
@@ -90,15 +89,15 @@ const CreateExpense = () => {
             <option value="miscalleneous">Miscalleneous</option>
             <option value="other">Other</option>
           </select>
-          {errors.expenseCategory && (
-            <p style={{ color: "red" }}>{errors.expenseCategory.message}</p>
-          )}
+          {errors.expenseCategory && <p className="error-message">{errors.expenseCategory.message}</p>}
         </div>
-        <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
-          {isSubmitting?"Creating Expense":"Create Expense"}
+        <button type="submit" className="submit-btn" disabled={isSubmitting} style={contexts.mode==="Enable Dark Mode"?{backgroundColor:"#007bff"}:{backgroundColor:"green"}}>
+          {isSubmitting ? "Creating Expense" : "Create Expense"}
         </button>
       </form>
-    </div>:<div><h1>You cannot access this page without logging in</h1></div>
+    </div> : <div className="login-error">
+      <h1>You cannot access this page without logging in</h1>
+    </div>
   );
 };
 

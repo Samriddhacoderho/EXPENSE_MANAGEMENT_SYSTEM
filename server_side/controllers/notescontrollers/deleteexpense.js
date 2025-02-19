@@ -17,4 +17,3 @@ const deleteexpense = async (req, res) => {
 };
 
 export default deleteexpense;
-

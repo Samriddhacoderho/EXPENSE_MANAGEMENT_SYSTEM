@@ -1,14 +1,18 @@
-import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { useContext} from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { context } from "../contexts/Context";
 
 const Navbar = () => {
+  const contexts = useContext(context);
+  const navigate=useNavigate()
   const handleSignout = () => {
-      // eslint-disable-next-line no-restricted-globals
-    if (confirm("Are you sure?")) {
+    // eslint-disable-next-line no-restricted-globals
+    if (confirm("Are you sure you want to sign out?")) {
       document.cookie =
         "loginToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-      localStorage.clear()
+      localStorage.clear();
       alert("You have been signed out");
+      navigate("/")
       window.location.reload();
     }
   };
@@ -17,11 +21,23 @@ const Navbar = () => {
   return (
     <div>
       <nav
-        className="navbar navbar-expand-lg bg-body-tertiary"
-        data-bs-theme="dark"
+        className="navbar navbar-expand-lg"
+        style={
+          contexts.mode === "Enable Dark Mode"
+            ? { backgroundColor: "#e3f2fd" }
+            : { backgroundColor: "#2B3035" }
+        }
       >
         <div className="container-fluid">
-          <Link className="navbar-brand" to="/">
+          <Link
+            className="navbar-brand"
+            to="/"
+            style={
+              contexts.mode === "Enable Dark Mode"
+                ? { color: "black" }
+                : { color: "white" }
+            }
+          >
             Navbar
           </Link>
           <button
@@ -44,6 +60,11 @@ const Navbar = () => {
                   }`}
                   aria-current="page"
                   to="/"
+                  style={
+                    contexts.mode === "Enable Dark Mode"
+                      ? { color: "black" }
+                      : { color: "white" }
+                  }
                 >
                   Home
                 </Link>
@@ -54,6 +75,11 @@ const Navbar = () => {
                     location.pathname === "/about" ? "active" : ""
                   }`}
                   to="/about"
+                  style={
+                    contexts.mode === "Enable Dark Mode"
+                      ? { color: "black" }
+                      : { color: "white" }
+                  }
                 >
                   About Us
                 </Link>
@@ -65,6 +91,11 @@ const Navbar = () => {
                       location.pathname === "/login" ? "active" : ""
                     }`}
                     to="/login"
+                    style={
+                      contexts.mode === "Enable Dark Mode"
+                        ? { color: "black" }
+                        : { color: "white" }
+                    }
                   >
                     Login
                   </Link>
@@ -77,6 +108,11 @@ const Navbar = () => {
                       location.pathname === "/register" ? "active" : ""
                     }`}
                     to="/register"
+                    style={
+                      contexts.mode === "Enable Dark Mode"
+                        ? { color: "black" }
+                        : { color: "white" }
+                    }
                   >
                     Register
                   </Link>
@@ -89,6 +125,11 @@ const Navbar = () => {
                       location.pathname === "/dashboard" ? "active" : ""
                     }`}
                     to="/dashboard"
+                    style={
+                      contexts.mode === "Enable Dark Mode"
+                        ? { color: "black" }
+                        : { color: "white" }
+                    }
                   >
                     Dashboard
                   </Link>
@@ -101,22 +142,52 @@ const Navbar = () => {
                       location.pathname === "/create-expense" ? "active" : ""
                     }`}
                     to="/create-expense"
+                    style={
+                      contexts.mode === "Enable Dark Mode"
+                        ? { color: "black" }
+                        : { color: "white" }
+                    }
                   >
                     Create Expense
                   </Link>
                 </li>
               )}
             </ul>
+            <div className="form-check form-switch">
+              <input
+                className="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="flexSwitchCheckDefault"
+                style={{ backgroundColor: "green" }}
+                onClick={
+                  contexts.mode === "Enable Dark Mode"
+                    ? () => contexts.setmode("Disable Dark Mode")
+                    : () => contexts.setmode("Enable Dark Mode")
+                }
+              />
+              <label
+                className="form-check-label"
+                for="flexSwitchCheckDefault"
+                style={contexts.mode==="Enable Dark Mode"?{color:"black"}:{color:"white"}}
+                >
+                {contexts.mode}
+              </label>
+            </div>
             {isLoggedIn && (
               <button
                 type="button"
                 onClick={handleSignout}
-                className="btn btn-light"
+                className="btn btn-light mx-3"
+                style={
+                  contexts.mode === "Enable Dark Mode"
+                    ? { backgroundColor: "black", color: "white" }
+                    : { backgroundColor: "white" }
+                }
               >
                 Sign Out
               </button>
             )}
-
           </div>
         </div>
       </nav>

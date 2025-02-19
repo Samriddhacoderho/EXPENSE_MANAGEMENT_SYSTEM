@@ -10,13 +10,15 @@ const Context = (props) => {
     return localStorage.getItem("firstname") || "User"
   })
 
+  const [mode,setmode]=useState("Enable Dark Mode")
+
 
   useEffect(()=>{
     localStorage.setItem("firstname",userMessage)
   },[userMessage])
 
   return (
-     <context.Provider value={{userMessage,setUserMessage,updateItems,setupdateItems}}>
+     <context.Provider value={{userMessage,setUserMessage,updateItems,setupdateItems,mode,setmode}}>
         {props.children}
     </context.Provider>
   )

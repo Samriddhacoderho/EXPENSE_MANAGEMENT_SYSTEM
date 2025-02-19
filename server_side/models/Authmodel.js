@@ -3,29 +3,29 @@ import validator from "validator"
 import bcrypt from "bcryptjs"
 
 const authSchema = new mongoose.Schema({
-  firstname: {
+  firstname: { 
     type: String,
     required: true,
     validate:[validator.isAlpha,"Firstname should not contain anything except alphabets"]
   },
-  lastname: {
+  lastname: { 
     type: String,
     required: true,
     validate:[validator.isAlpha,"Lastname should not contain anything except alphabets"]
 
   },
-  email: {
+  email: { 
     type: String,
     required: true,
     unique: true,
     validate:[validator.isEmail,"Provide a proper Email ID"]
   },
-  password: {
+  password: { 
     type: String,
     required: true,
     validate:[validator.isStrongPassword,"Provide a strong password"]
   },
-  confirmPass:{
+  confirmPass:{  
     type:String,
     required:true,
     validate:{
@@ -49,4 +49,3 @@ authSchema.pre("save",async function(next){
 const authModel=mongoose.model("logins",authSchema)
 
 export default authModel
-

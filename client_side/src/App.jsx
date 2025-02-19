@@ -11,7 +11,6 @@ import CreateExpense from './components/CreateExpense';
 import Editexpense from './components/Editexpense';
 
 const App = () => {
-  //Test commit
   return (
     <Context>
     <BrowserRouter>
