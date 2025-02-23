@@ -21,10 +21,10 @@ app.use(cors({
 //database
 connectTo()
 
-//login routes
+//login route
 app.use("/",authRoute)
 
-//expense routes
+//expense route
 app.use("/",expenseRoute)
 
 app.listen(port,()=>console.log(`Succesfully listening at http://localhost:${port}`))
